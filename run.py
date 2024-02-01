@@ -53,7 +53,7 @@ def player_symbols(): #done
     Player 1 will choose the symbol from X or O.
     Will return error message is other symbol is chosen
     """
-    payer1 = input("Please Choose X or O: \n").upper()
+    player1 = input("Please Choose X or O: \n").upper()
     while player1 not in ["X", "O"]:
         print("Invalid input, please choose from X , O")
         player1 = input("Please Choose X or O: \n").upper()
@@ -63,44 +63,68 @@ def player_symbols(): #done
     else:
         player2 = "X"
 
-    return payer1, player2
+    return player1, player2
+
+
+def out_of_board(row,col):
+    return 0<= row <= 2 and 0 <= col <= 2
+
+
+def player_move(player):
+    while True:
+        row = int(input(f"Player {player}, please enter row (0, 1, or 2)"))
+        col = int(input(f"Player {player}, please enter row (0, 1, or 2)"))
+
+        if out_of_board(row, col):
+            return row, col
+        else:
+            print("Pot of range. Please choose beween 0 and 2")
+        
+def move(board, player, row, col):
+    if board[row][col] == " ":
+        board[row][col] = player
+    else:
+        print("Please try again. This cell is already occupied")
+
+    new_row, new_col = player_move(player)
+    move(board, player, row, col)
+
+
+def player_swap(current_player, player_first, player_second):
+    return player_second if current_player == player_first else player_first
+
 
 
 def play_game():
     """
     """
-    payer1, player2 = player_symbols()
-    board = [[' ' for _ in range(3)] for _ in range(3)
+    player1, player2 = player_symbols()
+    board = [[' ' for _ in range(3)] for _ in range(3)]
     current_player = player1
 
     while True:
         print_board(board)
-        row = int(input(f"Player {current_player}, please enter row (0, 1, or 2)"))
-        col = int(input(f"Player {current_player}, please enter row (0, 1, or 2)"))
+        row, col = player_move(current_player)
+        move(board, current_player, row, col)
+        winner = if_winner(board)
 
-        if board[row][col] == " ":
-            board[row][col] = current_player
-            winner = if_winner(board)
 
-            if winner:
-                print_board(board)
-                print(f"Player {winner} wins!")
+        if winner:
+            print_board(board)
+            print(f"Player {winner} wins!")
 
-                break
+            break
 
-            if full_board(board):
-                print_board(board)
-                print("Its a tie!")
+        if full_board(board):
+            print_board(board)
+            print("Its a tie!")
 
-                break
+            break
             
-            current_player = player_swap(current_player, player1, player2) #to do 
+        current_player = player_swap(current_player, player1, player2) #to do 
 
-# add switch players
-# add out of range validation
-# add make move option ?
-# change the game loop
-# add desctription to the game function
+begining()
 
-
+if __name__ == "__main__":
+    play_game()
 
