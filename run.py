@@ -21,7 +21,7 @@ def print_board(board): #done
 
 
 
-def if_winner(board):
+def if_winner(board): #done
     """
     Will check rows , columns and dioganals for the win
     """
@@ -37,7 +37,7 @@ def if_winner(board):
         return None
 
 
-def full_board(board):
+def full_board(board): # done
     """
     Checks id the board is full
     """
@@ -78,8 +78,29 @@ def play_game():
         row = int(input(f"Player {current_player}, please enter row (0, 1, or 2)"))
         col = int(input(f"Player {current_player}, please enter row (0, 1, or 2)"))
 
-        if board[row][col] == " "
+        if board[row][col] == " ":
+            board[row][col] = current_player
+            winner = if_winner(board)
 
+            if winner:
+                print_board(board)
+                print(f"Player {winner} wins!")
+
+                break
+
+            if full_board(board):
+                print_board(board)
+                print("Its a tie!")
+
+                break
+            
+            current_player = player_swap(current_player, player1, player2) #to do 
+
+# add switch players
+# add out of range validation
+# add make move option ?
+# change the game loop
+# add desctription to the game function
 
 
 
