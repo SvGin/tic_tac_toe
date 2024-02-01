@@ -11,7 +11,7 @@ def begining():
     "If this is not achieved then it is a tie and the game will restart \n")
     input("Press Enter to continue")
 
-def print_board(board):
+def print_board(board): #done
     """
     Creating and printing out the board
     """
@@ -48,7 +48,7 @@ def full_board(board):
 
 
 
-def player_symbols():
+def player_symbols(): #done
     """
     Player 1 will choose the symbol from X or O.
     Will return error message is other symbol is chosen
@@ -64,7 +64,21 @@ def player_symbols():
         player2 = "X"
 
     return payer1, player2
-   
+
+
+def play_game():
+    """
+    """
+    payer1, player2 = player_symbols()
+    board = [[' ' for _ in range(3)] for _ in range(3)
+    current_player = player1
+
+    while True:
+        print_board(board)
+        row = int(input(f"Player {current_player}, please enter row (0, 1, or 2)"))
+        col = int(input(f"Player {current_player}, please enter row (0, 1, or 2)"))
+
+        if board[row][col] == " "
 
 
 
