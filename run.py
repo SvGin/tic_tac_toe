@@ -1,8 +1,3 @@
-board = ["-", "-", "-",
-        "-", "-", "-",
-        "-", "-", "-"]
-winner = None
-
 def begining():
     """
     Introduction to the game:
@@ -16,39 +11,29 @@ def begining():
     "If this is not achieved then it is a tie and the game will restart \n")
     input("Press Enter to continue")
 
+def print_board(board):
+    """
+    Creating and printing out the board
+    """
+    for row in board:
+        print(" | ".join(row))
+        print("-" * 5)
 
-def marking():
+def player_symbols():
     """
-    Assignes the symbol to each player: X or O
-    If player one will choose X then player 2 will be assigned O or other way round
+    Player 1 will choose the symbol from X or O.
+    Will return error message is other symbol is chosen
     """
-    print("Please use CAPITAL X or O")
-    first = input("Player1, please choose your symbol between X or O \n")
-    if first == "X" :
-        second = "O"
-        print("Player2, your symbol is O")
-    elif first == "O":
-        second = "X"
-        print("Player 2, you are X. ")
-    elif first != "X" or first != "O":
-        print("Not valid input , please try again") 
-    else:
-        return first, second  
+    payer1 = input("Please Choose X or O: \n").upper()
+    while player1 not in ["X", "O"]:
+        player1 = input("Invalid. Please Choose X or O: \n").upper()
+
+    player2 = "X" if payer1 == "O" else "O"
+    return player1, player2
+
+
     
 
-    #print(first, second)
-   
-    
 
 
-
-
-def main():
-    """
-    Will store and call all the functions
-    """
-    introduction = begining()
-    choosing_symbol = marking()
-
-main()
 
