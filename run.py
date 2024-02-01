@@ -19,6 +19,35 @@ def print_board(board):
         print(" | ".join(row))
         print("-" * 5)
 
+
+
+def if_winner(board):
+    """
+    Will check rows , columns and dioganals for the win
+    """
+    for i in range(3):
+        if board[i][0] == board[i][1] == board[i][2] != " " :
+            return board[i][0] # win row
+        if board[0][i] == board[1][i] == board[2][i] != " " :
+            return board[0][i] # win column
+        if board[0][0] == board[1][1] == board[2][2] != " " :
+            return board[0][2] #win dioganal 1
+        if board[0][2] == board[1][1] == board[2][0] != " " :
+            return board[0][2] # win dioganal 2
+        return None
+
+
+def full_board(board):
+    """
+    Checks id the board is full
+    """
+    for row in board:
+        if " " in row:
+            return False
+    return True
+
+
+
 def player_symbols():
     """
     Player 1 will choose the symbol from X or O.
@@ -30,9 +59,6 @@ def player_symbols():
 
     player2 = "X" if payer1 == "O" else "O"
     return player1, player2
-
-
-    
 
 
 
