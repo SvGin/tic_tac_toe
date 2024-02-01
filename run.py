@@ -55,10 +55,16 @@ def player_symbols():
     """
     payer1 = input("Please Choose X or O: \n").upper()
     while player1 not in ["X", "O"]:
-        player1 = input("Invalid. Please Choose X or O: \n").upper()
+        print("Invalid input, please choose from X , O")
+        player1 = input("Please Choose X or O: \n").upper()
 
-    player2 = "X" if payer1 == "O" else "O"
-    return player1, player2
+    if player1 == "X":
+        player2 = "O"
+    else:
+        player2 = "X"
+
+    return payer1, player2
+   
 
 
 
