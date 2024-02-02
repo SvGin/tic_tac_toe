@@ -94,7 +94,7 @@ def move(board, player, row, col):
     else:
         print("Please try again. This cell is already occupied \n")
         new_row, new_col = player_move(player)
-        move(board, player, row, col)
+        move(board, player, new_row, new_col)
 
 
 def player_swap(current_player, player_first, player_second):
