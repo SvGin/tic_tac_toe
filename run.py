@@ -1,15 +1,3 @@
-def begining():
-    """
-    Introduction to the game:
-    Welcome message and game rules.
-
-    """
-    print("Welcome to TIC TAC TOE\n")
-    print("Rules of the game are:\n Choose your marking between O and X\n"
-    "Players will take turns and place their simbols on the grid\n "
-    "In order to win one of the plyers need to place 3 of the symbols in a horizontal, vertical or diogonal row\n "
-    "If this is not achieved then it is a tie and the game will restart \n")
-    input("Press Enter to continue")
 
 def print_board(board): #done
     """
@@ -17,7 +5,7 @@ def print_board(board): #done
     """
     for row in board:
         print(" | ".join(row))
-        print("-" * 5)
+        print("-" * 10)
 
 
 
@@ -123,8 +111,5 @@ def play_game():
             
         current_player = player_swap(current_player, player1, player2) #to do 
 
-begining()
 
-if __name__ == "__main__":
-    play_game()
-
+play_game()
