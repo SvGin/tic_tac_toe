@@ -55,27 +55,26 @@ def player_symbols(): #done
 
 
 def out_of_board(row,col):
-    return 0<= row <= 2 and 0 <= col <= 2
+    return 0 <= row <= 2 and 0 <= col <= 2
 
 
 def player_move(player):
     while True:
         row = int(input(f"Player {player}, please enter row (0, 1, or 2)"))
-        col = int(input(f"Player {player}, please enter row (0, 1, or 2)"))
+        col = int(input(f"Player {player}, please enter column (0, 1, or 2)"))
 
         if out_of_board(row, col):
             return row, col
         else:
-            print("Pot of range. Please choose beween 0 and 2")
+            print("Out of range. Please choose beween 0 and 2")
         
 def move(board, player, row, col):
     if board[row][col] == " ":
         board[row][col] = player
     else:
         print("Please try again. This cell is already occupied")
-
-    new_row, new_col = player_move(player)
-    move(board, player, row, col)
+        new_row, new_col = player_move(player)
+        move(board, player, row, col)
 
 
 def player_swap(current_player, player_first, player_second):
