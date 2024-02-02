@@ -2,29 +2,36 @@
 def print_board(board): #done
     """
     Creating and printing out the board
+    Limits how many rows are printed out
     """
-    for i, row in enumerate(board):
+    for i, row in enumerate(board): 
         print(" | ".join(row))
-        if i < 2:
+        if i < 2:  
             print("-" * 10)
 
 
 
 def if_winner(board): #done
     """
-    Will check rows , columns and dioganals for the win
+    Will check rows , columns and dioganals for the winner
     """
-    for i in range(3):
-        if board[i][0] == board[i][1] == board[i][2] != " " :
-            return board[i][0] # win row
-        if board[0][i] == board[1][i] == board[2][i] != " " :
-            return board[0][i] # win column
-        if board[0][0] == board[1][1] == board[2][2] != " " :
-            return board[0][2] #win dioganal 1
-        if board[0][2] == board[1][1] == board[2][0] != " " :
-            return board[0][2] # win dioganal 2
-        return None
+     # Will heck rows
+    for row in board:
+        if row[0] == row[1] == row[2] and row[0] != ' ':
+            return row[0]
 
+    # Will check columns
+    for col in range(3):
+        if board[0][col] == board[1][col] == board[2][col] and board[0][col] != ' ':
+            return board[0][col]
+
+    # Will check both diagonals
+    if board[0][0] == board[1][1] == board[2][2] and board[0][0] != ' ':
+        return board[0][0]
+    if board[0][2] == board[1][1] == board[2][0] and board[0][2] != ' ':
+        return board[0][2]
+
+    return None
 
 def full_board(board): # done
     """
@@ -109,7 +116,7 @@ def play_game():
 
             break
             
-        current_player = player_swap(current_player, player1, player2) #to do 
+        current_player = player_swap(current_player, player1, player2) 
 
 
 play_game()
