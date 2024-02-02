@@ -91,8 +91,8 @@ def player_move(player):
     """
     while True:
         try:
-            row = int(input(f"Player {player}, please enter row (0, 1, or 2)"))
-            col = int(input(f"Player {player}, please enter column (0, 1, or 2)"))
+            row = int(input(f"Player {player}, please enter row (0, 1, or 2)\n"))
+            col = int(input(f"Player {player}, please enter column (0, 1, or 2)\n"))
 
             if out_of_board(row, col):
                 return row, col
