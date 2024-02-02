@@ -1,11 +1,14 @@
-def introduction():
-    print("Welcome to the game of Tic-TacToe! \n")
+def introduction(): #done
+    """
+    This function contains greatings and rules of the game
+    """
+    print("Welcome to the game of Tic-Tac-Toe! \n")
     print("Please read the rules of the game: \n")
     print("1. Game is played on a 3x3 board ")
-    print("2. Players choose the X or O for their symbole in the game")
-    print("3. Players take turns to choose the space on the game board")
-    print("4. Player who will place three of their symboles in a row , column or dioganal first wins")
-    print("5. If the intire board is filled and there is no winner , the game is a draw.\n")
+    print("2. Players choose the X or O for their symbol")
+    print("3. Players take turns to choose the cell on the game board")
+    print("4. Player who will place three of their symbols in a row , column or dioganal first wins")
+    print("5. If the entire board is filled and there is no winner , the game is a draw.\n")
     print("Good Luck :)\n")
 
 def print_board(board): #done
@@ -44,7 +47,7 @@ def if_winner(board): #done
 
 def full_board(board): # done
     """
-    Checks id the board is full
+    Checks if the board is full
     """
     for row in board:
         if " " in row:
@@ -72,10 +75,20 @@ def player_symbols(): #done
 
 
 def out_of_board(row,col):
+    """
+    To make sure that the chosen row and column are valid
+    and in the range of the board grid
+    """
     return 0 <= row <= 2 and 0 <= col <= 2
 
 
 def player_move(player):
+    """
+    Player to input the row and column for the move
+    Check if the move is inside the board and 
+    if the nuber is entered not letter or other symbols. 
+    To display the error message if needed criteria is not met.
+    """
     while True:
         try:
             row = int(input(f"Player {player}, please enter row (0, 1, or 2)"))
@@ -89,6 +102,11 @@ def player_move(player):
             print("Invalid input. Please enter a number 0, 1 or 2. Please try again!\n")
         
 def move(board, player, row, col):
+    """
+    To register Players move
+    To let player know if the cell is already occupied 
+    and ask to enter row and column again
+    """
     if board[row][col] == " ":
         board[row][col] = player
     else:
@@ -98,12 +116,16 @@ def move(board, player, row, col):
 
 
 def player_swap(current_player, player_first, player_second):
+    """
+    Players to take turns after move registerd on the board
+    """
     return player_second if current_player == player_first else player_first
 
 
 
 def play_game():
     """
+    This function contains all other needed functions to start and play the game
     """
     introduction()
     player1, player2 = player_symbols()
@@ -131,5 +153,5 @@ def play_game():
             
         current_player = player_swap(current_player, player1, player2) 
 
-
+#Call main funcion, start the game
 play_game()
