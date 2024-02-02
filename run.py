@@ -1,3 +1,12 @@
+def introduction():
+    print("Welcome to the game of Tic-TacToe! \n")
+    print("Please read the rules of the game: \n")
+    print("1. Game is played on a 3x3 board ")
+    print("2. Players choose the X or O for their symbole in the game")
+    print("3. Players take turns to choose the space on the game board")
+    print("4. Player who will place three of their symboles in a row , column or dioganal first wins")
+    print("5. If the intire board is filled and there is no winner , the game is a draw.\n")
+    print("Good Luck :)\n")
 
 def print_board(board): #done
     """
@@ -51,7 +60,7 @@ def player_symbols(): #done
     """
     player1 = input("Please Choose X or O: \n").upper()
     while player1 not in ["X", "O"]:
-        print("Invalid input, please choose from X , O")
+        print("Invalid input, please choose from X , O\n")
         player1 = input("Please Choose X or O: \n").upper()
 
     if player1 == "X":
@@ -75,15 +84,15 @@ def player_move(player):
             if out_of_board(row, col):
                 return row, col
             else:
-                print("Out of range. Please choose beween 0 and 2")
+                print("Out of range. Please choose beween 0 and 2\n")
         except ValueError:
-            print("Invalid input. Please enter a number 0, 1 or 2. Please try again!")
+            print("Invalid input. Please enter a number 0, 1 or 2. Please try again!\n")
         
 def move(board, player, row, col):
     if board[row][col] == " ":
         board[row][col] = player
     else:
-        print("Please try again. This cell is already occupied")
+        print("Please try again. This cell is already occupied \n")
         new_row, new_col = player_move(player)
         move(board, player, row, col)
 
@@ -96,6 +105,7 @@ def player_swap(current_player, player_first, player_second):
 def play_game():
     """
     """
+    introduction()
     player1, player2 = player_symbols()
     board = [[' ' for _ in range(3)] for _ in range(3)]
     current_player = player1
