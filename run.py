@@ -3,9 +3,10 @@ def print_board(board): #done
     """
     Creating and printing out the board
     """
-    for row in board:
+    for i, row in enumerate(board):
         print(" | ".join(row))
-        print("-" * 10)
+        if i < 2:
+            print("-" * 10)
 
 
 
