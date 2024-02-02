@@ -68,13 +68,16 @@ def out_of_board(row,col):
 
 def player_move(player):
     while True:
-        row = int(input(f"Player {player}, please enter row (0, 1, or 2)"))
-        col = int(input(f"Player {player}, please enter column (0, 1, or 2)"))
+        try:
+            row = int(input(f"Player {player}, please enter row (0, 1, or 2)"))
+            col = int(input(f"Player {player}, please enter column (0, 1, or 2)"))
 
-        if out_of_board(row, col):
-            return row, col
-        else:
-            print("Out of range. Please choose beween 0 and 2")
+            if out_of_board(row, col):
+                return row, col
+            else:
+                print("Out of range. Please choose beween 0 and 2")
+        except ValueError:
+            print("Invalid input. Please enter a number 0, 1 or 2. Please try again!")
         
 def move(board, player, row, col):
     if board[row][col] == " ":
